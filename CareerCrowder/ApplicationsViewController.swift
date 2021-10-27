@@ -7,11 +7,25 @@
 
 import UIKit
 
-class ApplicationsViewController: UITableViewController {
-    
-    var companies = [String]()
-    var newCompany: String = ""
+struct Application{
+    init(){
+        name = ""
+        position = ""
+        location = ""
+        JobStatus = ""
+    }
+    var name: String
+    var position: String
+    var location: String
+    var JobStatus: String
+}
 
+class ApplicationsViewController: UITableViewController, CreateApplication {
+    
+    var companies = [Application]()
+    var newCompany: String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,26 +48,39 @@ class ApplicationsViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return companies.count
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ApplicationCell", for: indexPath)
-        cell.textLabel!.text = companies[indexPath.row]
-
+        let companyNameLabel = cell.viewWithTag(2) as! UILabel
+        let postionLabel = cell.viewWithTag(3) as! UILabel
+        let statusLabel = cell.viewWithTag(4) as! UILabel
+        let locationLabel = cell.viewWithTag(5) as! UILabel
+        companyNameLabel.text = companies[indexPath.row].name
+        postionLabel.text = companies[indexPath.row].position
+        statusLabel.text = "Status: \(companies[indexPath.row].JobStatus)"
+        locationLabel.text = "Location: \(companies[indexPath.row].location)"
+        
         // Configure the cell...
 
         return cell
     }
     
-    @IBAction func cancel(segue:UIStoryboardSegue) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "newApp"
+        {
+            let createAppSegue = segue.destination as! ApplicationDetailViewController
+            
+            createAppSegue.delegate = self
+        }
     }
     
-    @IBAction func done(segue:UIStoryboardSegue) {
-        let applicationDetailVC = segue.source as! ApplicationDetailViewController
-        newCompany = applicationDetailVC.name
-        companies.append(newCompany)
-        tableView.reloadData()
+    @IBAction func CreateApplication(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "newApp", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -61,6 +88,17 @@ class ApplicationsViewController: UITableViewController {
             companies.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+        
+    func addApp(name: String, jobTitle: String, status: String, locationAddress: String)
+    {
+        var newCompany = Application()
+        newCompany.name = name
+        newCompany.JobStatus = status
+        newCompany.location = locationAddress
+        newCompany.position = jobTitle
+        companies.append(newCompany)
+        tableView.reloadData()
     }
     
     
