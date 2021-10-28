@@ -7,18 +7,26 @@
 
 import UIKit
 protocol CreateApplication {
-    func addApp(name: String, jobTitle: String, status: String, locationAddress: String)
+    func addApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String)
+    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int)
 }
 class ApplicationDetailViewController: UIViewController {
     
     @IBOutlet weak var companyName: UITextField!
-    
     
     @IBOutlet weak var JobTitle: UITextField!
     
     @IBOutlet weak var Status: UITextField!
     
     @IBOutlet weak var Location: UITextField!
+    
+    @IBOutlet weak var jobLink: UITextField!
+    
+    @IBOutlet weak var dateApplied: UIDatePicker!
+    
+    @IBOutlet weak var salary: UITextField!
+    
+    @IBOutlet weak var jobDesc: UITextField!
     
     var delegate : CreateApplication?
     
@@ -33,6 +41,15 @@ class ApplicationDetailViewController: UIViewController {
     
     var locationTitle: String = ""
 
+    var dateApp: Date = Date.init()
+    
+    var link: String = ""
+    
+    var sal: String = ""
+    
+    var desc: String = ""
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -55,8 +72,12 @@ class ApplicationDetailViewController: UIViewController {
                     jobTitle = JobTitle.text!
                     statusTitle = Status.text!
                     locationTitle = Location.text!
-                delegate?.addApp(name: name, jobTitle: jobTitle, status: statusTitle, locationAddress: locationTitle)
-                self.navigationController?.popViewController(animated: true)
+                    link = jobLink.text!
+                    sal = salary.text!
+                    desc = jobDesc.text!
+                    dateApp = dateApplied.date
+                    delegate?.addApp(name: name, jobTitle: jobTitle, status: statusTitle, locationAddress: locationTitle, link: link, dateApp: dateApp, salary: sal, Desc: desc)
+                    self.navigationController?.popViewController(animated: true)
                 }
     }
     
@@ -71,6 +92,7 @@ class ApplicationDetailViewController: UIViewController {
         actionSheetAlert.addAction(cancelAction)
         self.present(actionSheetAlert, animated: true, completion: nil)
     }
+    
     
     
 
