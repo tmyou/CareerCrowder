@@ -13,17 +13,27 @@ struct Application{
         position = ""
         location = ""
         JobStatus = ""
+        appLink = ""
+        dateApp = Date.init()
+        salary = ""
+        desc = ""
     }
     var name: String
     var position: String
     var location: String
     var JobStatus: String
+    var appLink: String
+    var dateApp: Date
+    var salary: String
+    var desc: String
 }
 
 class ApplicationsViewController: UITableViewController, CreateApplication {
     
     var companies = [Application]()
     var newCompany: String = ""
+    var selectedApp = Application()
+    var rowIndex = 0
     
     
     override func viewDidLoad() {
@@ -77,6 +87,21 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
             
             createAppSegue.delegate = self
         }
+        else if segue.identifier == "editApp"
+        {
+            let editAppSegue = segue.destination as! ApplicationEditViewController
+            editAppSegue.delegate = self
+            editAppSegue.selectedApp = selectedApp
+            editAppSegue.index = rowIndex
+        }
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedApp = companies[indexPath.row]
+        rowIndex = indexPath.row
+        self.performSegue(withIdentifier: "editApp", sender: self)
     }
     
     @IBAction func CreateApplication(_ sender: UIBarButtonItem) {
@@ -90,14 +115,33 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         }
     }
         
-    func addApp(name: String, jobTitle: String, status: String, locationAddress: String)
+    func addApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String)
     {
         var newCompany = Application()
         newCompany.name = name
         newCompany.JobStatus = status
         newCompany.location = locationAddress
         newCompany.position = jobTitle
+        newCompany.appLink = link
+        newCompany.dateApp = dateApp
+        newCompany.salary = salary
+        newCompany.desc = Desc
+        print(newCompany)
         companies.append(newCompany)
+        tableView.reloadData()
+    }
+    
+    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int) {
+        var editedCompany = Application()
+        editedCompany.name = name
+        editedCompany.JobStatus = status
+        editedCompany.location = locationAddress
+        editedCompany.position = jobTitle
+        editedCompany.appLink = link
+        editedCompany.dateApp = dateApp
+        editedCompany.salary = salary
+        editedCompany.desc = Desc
+        companies[index] = editedCompany
         tableView.reloadData()
     }
     
