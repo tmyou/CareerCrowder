@@ -47,6 +47,17 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row % 2 == 0 {
+            let altCellColor: UIColor? = UIColor(red: 0.0824, green: 0.5922, blue: 0.898, alpha: 0.6)
+            cell.backgroundColor = altCellColor
+        }
+        else {
+            let alt2CellColor: UIColor? = UIColor(red: 0.4118, green: 0.8549, blue: 0.8588, alpha: 0.6)
+            cell.backgroundColor = alt2CellColor
+        }
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         let nav = self.tabBarController?.viewControllers![2] as! UINavigationController
         let offersTab = nav.topViewController as! OfferViewController
@@ -66,7 +77,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 103
     }
 
     
@@ -77,10 +88,9 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         let statusLabel = cell.viewWithTag(4) as! UILabel
         let locationLabel = cell.viewWithTag(5) as! UILabel
         companyNameLabel.text = companies[indexPath.row].name
-        postionLabel.text = companies[indexPath.row].position
+        postionLabel.text = "Position: \(companies[indexPath.row].position)"
         statusLabel.text = "Status: \(companies[indexPath.row].JobStatus)"
         locationLabel.text = "Location: \(companies[indexPath.row].location)"
-        
         // Configure the cell...
 
         return cell
