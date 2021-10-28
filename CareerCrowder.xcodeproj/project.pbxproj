@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F772B6B272AFDCE00B68668 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F772B6A272AFDCE00B68668 /* OffersViewController.swift */; };
 		3F855B842716344600913FA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F855B832716344600913FA3 /* AppDelegate.swift */; };
 		3F855B862716344600913FA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F855B852716344600913FA3 /* SceneDelegate.swift */; };
 		3F855B8B2716344600913FA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F855B892716344600913FA3 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F772B6A272AFDCE00B68668 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		3F855B802716344600913FA3 /* CareerCrowder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CareerCrowder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F855B832716344600913FA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F855B852716344600913FA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				F7FC1D3527202C6900A4CD7D /* CalendarViewController.swift */,
 				F7FC1D372720313300A4CD7D /* CalendarHelper.swift */,
 				3FC66D142729ECAA0097A352 /* ApplicationEditViewController.swift */,
+				3F772B6A272AFDCE00B68668 /* OffersViewController.swift */,
 			);
 			path = CareerCrowder;
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				F7FC1D3627202C6900A4CD7D /* CalendarViewController.swift in Sources */,
 				3F855B842716344600913FA3 /* AppDelegate.swift in Sources */,
 				F7FC1D2E271FF80800A4CD7D /* ApplicationsViewController.swift in Sources */,
+				3F772B6B272AFDCE00B68668 /* OffersViewController.swift in Sources */,
 				F7FC1D30271FFAC400A4CD7D /* ApplicationDetailViewController.swift in Sources */,
 				3F855B862716344600913FA3 /* SceneDelegate.swift in Sources */,
 				F7FC1D3427202B8900A4CD7D /* CalendarCell.swift in Sources */,
