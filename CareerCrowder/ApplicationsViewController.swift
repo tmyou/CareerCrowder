@@ -46,6 +46,12 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        let nav = self.tabBarController?.viewControllers![2] as! UINavigationController
+        let offersTab = nav.topViewController as! OfferViewController
+        offersTab.companiesListApp = companies
+    }
 
     // MARK: - Table view data source
 
