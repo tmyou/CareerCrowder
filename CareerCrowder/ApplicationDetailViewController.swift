@@ -52,7 +52,16 @@ class ApplicationDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let backBarBtnItem = UIBarButtonItem()
+            backBarBtnItem.title = "something different"
+            navigationItem.backBarButtonItem = backBarBtnItem
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let backBarBtnItem = UIBarButtonItem()
+            backBarBtnItem.title = "something different"
+        self.navigationItem.backBarButtonItem = backBarBtnItem
     }
     
     @IBAction func completeApplication(_ sender: Any) {

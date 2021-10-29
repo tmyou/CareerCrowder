@@ -38,22 +38,33 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         companies = []
         // Uncomment the following line to preserve selection between presentations
         //self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
+        self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        let backBarBtnItem = UIBarButtonItem()
+            backBarBtnItem.title = "Cancel"
+        backBarBtnItem.tintColor = .white
+        self.navigationItem.backBarButtonItem = backBarBtnItem
+    }
+    
+    
     
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if indexPath.row % 2 == 0 {
-            let altCellColor: UIColor? = UIColor(red: 0.0824, green: 0.5922, blue: 0.898, alpha: 0.6)
+            let altCellColor: UIColor? = UIColor(red: 0.20, green: 0.88, blue: 0.77, alpha: 0.6)
             cell.backgroundColor = altCellColor
         }
         else {
-            let alt2CellColor: UIColor? = UIColor(red: 0.4118, green: 0.8549, blue: 0.8588, alpha: 0.6)
+            let alt2CellColor: UIColor? = UIColor(red: 0.05, green: 0.45, blue: 0.47, alpha: 0.6)
             cell.backgroundColor = alt2CellColor
         }
     }
@@ -68,6 +79,24 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        // TODO: FIX for deletion bugs
+//        var numOfSections: Int = 0
+//        if companies.count > 0
+//        {
+//            tableView.separatorStyle = .singleLine
+//            numOfSections            = 1
+//            tableView.backgroundView = nil
+//        }
+//        else
+//        {
+//            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+//            noDataLabel.text          = "No applications"
+//            noDataLabel.textColor     = UIColor.black
+//            noDataLabel.textAlignment = .center
+//            tableView.backgroundView  = noDataLabel
+//            tableView.separatorStyle  = .none
+//        }
+//        return numOfSections
         return 1
     }
 
@@ -159,6 +188,27 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         editedCompany.desc = Desc
         companies[index] = editedCompany
         tableView.reloadData()
+    }
+    
+    func ifNumber(in tableView: UITableView) -> Int
+    {
+        var numOfSections: Int = 0
+        if companies.count > 0
+        {
+            tableView.separatorStyle = .singleLine
+            numOfSections            = 1
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.text          = "No data available"
+            noDataLabel.textColor     = UIColor.black
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
     }
     
     
