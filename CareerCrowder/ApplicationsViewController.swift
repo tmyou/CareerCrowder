@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 struct Application{
     init(){
@@ -28,13 +29,15 @@ struct Application{
     var desc: String
 }
 
+var companies = [Applications]()
+
 class ApplicationsViewController: UITableViewController, CreateApplication {
     
-    var companies = [Application]()
     var newCompany: String = ""
-    var selectedApp = Application()
+    var selectedApp = Applications()
     var rowIndex = 0
     
+    var firstLoad = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +49,28 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem
         self.navigationItem.leftBarButtonItem?.tintColor = UIColor.white
+        
+        if(firstLoad)
+        {
+            firstLoad = false
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Applications")
+            do
+            {
+                let results:NSArray = try context.fetch(request) as NSArray
+                for result in results
+                {
+                    let application = result as! Applications
+                    companies.append(application)
+                }
+            }
+            catch
+            {
+                print("Failed to get data")
+            }
+        }
+        
         tableView.reloadData()
     }
     
@@ -117,9 +142,9 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         let statusLabel = cell.viewWithTag(4) as! UILabel
         let locationLabel = cell.viewWithTag(5) as! UILabel
         companyNameLabel.text = companies[indexPath.row].name
-        postionLabel.text = "Position: \(companies[indexPath.row].position)"
-        statusLabel.text = "Status: \(companies[indexPath.row].JobStatus)"
-        locationLabel.text = "Location: \(companies[indexPath.row].location)"
+        postionLabel.text = "Position: \(companies[indexPath.row].position!)"
+        statusLabel.text = "Status: \(companies[indexPath.row].jobStatus!)"
+        locationLabel.text = "Location: \(companies[indexPath.row].location!)"
         // Configure the cell...
 
         return cell
@@ -155,38 +180,82 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            companies.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            do
+            {
+                context.delete(companies[indexPath.row])
+                companies.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                try context.save()
+            }
+            catch
+            {
+                print("Failed to delete data")
+            }
         }
     }
         
     func addApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String)
     {
-        var newCompany = Application()
-        newCompany.name = name
-        newCompany.JobStatus = status
-        newCompany.location = locationAddress
-        newCompany.position = jobTitle
-        newCompany.appLink = link
-        newCompany.dateApp = dateApp
-        newCompany.salary = salary
-        newCompany.desc = Desc
-        print(newCompany)
-        companies.append(newCompany)
+        //Save application using core data
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Applications", in: context)
+        let newApp = Applications(entity: entity!, insertInto: context)
+        newApp.name = name
+        newApp.position = jobTitle
+        newApp.jobStatus = status
+        newApp.location = locationAddress
+        newApp.appLink = link
+        newApp.salary = salary
+        newApp.desc = Desc
+        newApp.dateApp = dateApp
+        do{
+            try context.save()
+            companies.append(newApp)
+        }
+        catch{
+            print("context save error")
+            let alert = UIAlertController(title: "Error in Saving", message: "Please try again", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
+            self.present(alert, animated: true, completion: nil)
+        }
+
         tableView.reloadData()
     }
     
-    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int) {
-        var editedCompany = Application()
-        editedCompany.name = name
-        editedCompany.JobStatus = status
-        editedCompany.location = locationAddress
-        editedCompany.position = jobTitle
-        editedCompany.appLink = link
-        editedCompany.dateApp = dateApp
-        editedCompany.salary = salary
-        editedCompany.desc = Desc
-        companies[index] = editedCompany
+    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int, selectedAppToEdit: Applications) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Applications")
+        do
+        {
+            let results:NSArray = try context.fetch(request) as NSArray
+            for result in results
+            {
+                let applicationEdited = result as! Applications
+                if(selectedAppToEdit == applicationEdited)
+                {
+                    print("Test")
+                    applicationEdited.name = name
+                    applicationEdited.jobStatus = status
+                    applicationEdited.location = locationAddress
+                    applicationEdited.position = jobTitle
+                    applicationEdited.appLink = link
+                    applicationEdited.dateApp = dateApp
+                    applicationEdited.salary = salary
+                    applicationEdited.desc = Desc
+                    companies[index] = applicationEdited
+                    try context.save()
+                }
+            }
+        }
+        catch
+        {
+            print("Failed to get data")
+        }
+
         tableView.reloadData()
     }
     
