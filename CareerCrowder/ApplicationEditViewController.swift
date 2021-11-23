@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 class ApplicationEditViewController: UIViewController {
     
@@ -25,7 +26,7 @@ class ApplicationEditViewController: UIViewController {
     
     @IBOutlet weak var desc: UITextField!
     
-    var selectedApp = Application()
+    var selectedApp = Applications()
     
     var delegate: CreateApplication?
     var index = 0
@@ -39,7 +40,7 @@ class ApplicationEditViewController: UIViewController {
         companyName.text = selectedApp.name
         jobTitle.text = selectedApp.position
         jobLocation.text = selectedApp.location
-        status.text = selectedApp.JobStatus
+        status.text = selectedApp.jobStatus
         jobLink.text = selectedApp.appLink
         dateApp.date = selectedApp.dateApp
         salary.text = selectedApp.salary
@@ -72,7 +73,7 @@ class ApplicationEditViewController: UIViewController {
             self.present(alert, animated: true, completion: nil)
         }
        else{
-        delegate?.editApp(name: companyName.text!, jobTitle: jobTitle.text!, status: status.text!, locationAddress: jobLocation.text!, link: jobLink.text!, dateApp: dateApp.date, salary: salary.text!, Desc: desc.text!, index: index)
+        delegate?.editApp(name: companyName.text!, jobTitle: jobTitle.text!, status: status.text!, locationAddress: jobLocation.text!, link: jobLink.text!, dateApp: dateApp.date, salary: salary.text!, Desc: desc.text!, index: index, selectedAppToEdit: selectedApp)
             self.navigationController?.popViewController(animated: true)
         }
     }

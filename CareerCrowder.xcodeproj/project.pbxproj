@@ -26,6 +26,8 @@
 		3F855B902716344A00913FA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F855B8E2716344A00913FA3 /* LaunchScreen.storyboard */; };
 		3F855B9B2716344B00913FA3 /* CareerCrowderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F855B9A2716344B00913FA3 /* CareerCrowderTests.swift */; };
 		3F855BA62716344B00913FA3 /* CareerCrowderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F855BA52716344B00913FA3 /* CareerCrowderUITests.swift */; };
+		3F8D4A1F274B158C00F22761 /* ApplicationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D4A1E274B158C00F22761 /* ApplicationsModel.swift */; };
+		3F9053632745FF810077F0B0 /* ApplicationsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F9053612745FF800077F0B0 /* ApplicationsModel.xcdatamodeld */; };
 		3FC66D152729ECAA0097A352 /* ApplicationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC66D142729ECAA0097A352 /* ApplicationEditViewController.swift */; };
 		F741B42327385C36002239C7 /* CalendarKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741B42227385C36002239C7 /* CalendarKitViewController.swift */; };
 		F741B42627385D2E002239C7 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = F741B42527385D2E002239C7 /* CalendarKit */; };
@@ -80,6 +82,8 @@
 		3F855BA12716344B00913FA3 /* CareerCrowderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CareerCrowderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F855BA52716344B00913FA3 /* CareerCrowderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerCrowderUITests.swift; sourceTree = "<group>"; };
 		3F855BA72716344B00913FA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F8D4A1E274B158C00F22761 /* ApplicationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsModel.swift; sourceTree = "<group>"; };
+		3F9053622745FF810077F0B0 /* ApplicationsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ApplicationsModel.xcdatamodel; sourceTree = "<group>"; };
 		3FC66D142729ECAA0097A352 /* ApplicationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditViewController.swift; sourceTree = "<group>"; };
 		F741B42227385C36002239C7 /* CalendarKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarKitViewController.swift; sourceTree = "<group>"; };
 		F741B42727387177002239C7 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
@@ -173,6 +177,8 @@
 				3F772B6A272AFDCE00B68668 /* OffersViewController.swift */,
 				F741B42227385C36002239C7 /* CalendarKitViewController.swift */,
 				F741B42727387177002239C7 /* EKWrapper.swift */,
+				3F9053612745FF800077F0B0 /* ApplicationsModel.xcdatamodeld */,
+				3F8D4A1E274B158C00F22761 /* ApplicationsModel.swift */,
 			);
 			path = CareerCrowder;
 			sourceTree = "<group>";
@@ -343,7 +349,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F7FC1D3627202C6900A4CD7D /* CalendarViewController.swift in Sources */,
+				3F8D4A1F274B158C00F22761 /* ApplicationsModel.swift in Sources */,
 				3F855B842716344600913FA3 /* AppDelegate.swift in Sources */,
+				3F9053632745FF810077F0B0 /* ApplicationsModel.xcdatamodeld in Sources */,
 				F7FC1D2E271FF80800A4CD7D /* ApplicationsViewController.swift in Sources */,
 				3F772B6B272AFDCE00B68668 /* OffersViewController.swift in Sources */,
 				F7FC1D30271FFAC400A4CD7D /* ApplicationDetailViewController.swift in Sources */,
@@ -698,6 +706,19 @@
 			productName = CalendarKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		3F9053612745FF800077F0B0 /* ApplicationsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3F9053622745FF810077F0B0 /* ApplicationsModel.xcdatamodel */,
+			);
+			currentVersion = 3F9053622745FF810077F0B0 /* ApplicationsModel.xcdatamodel */;
+			path = ApplicationsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F855B782716344600913FA3 /* Project object */;
 }

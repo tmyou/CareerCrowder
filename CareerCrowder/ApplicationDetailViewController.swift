@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
+
 protocol CreateApplication {
     func addApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String)
-    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int)
+    func editApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String, index: Int, selectedAppToEdit: Applications)
 }
 class ApplicationDetailViewController: UIViewController {
     
