@@ -31,13 +31,18 @@ struct Application{
 
 var companies = [Applications]()
 
-class ApplicationsViewController: UITableViewController, CreateApplication {
+class ApplicationsViewController: UITableViewController, CreateApplication, UISearchResultsUpdating {
     
     var newCompany: String = ""
     var selectedApp = Applications()
     var rowIndex = 0
     
     var firstLoad = true
+    
+    //Search bar stuff
+    var filteredData: [Applications]!
+
+    var searchController: UISearchController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +75,26 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
                 print("Failed to get data")
             }
         }
+        
+        //search bar code
+        filteredData = companies
+        
+        // Initializing with searchResultsController set to nil means that
+        // searchController will use this view controller to display the search results
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+
+        // If we are using this same view controller to present the results
+        // dimming it out wouldn't make sense. Should probably only set
+        // this to yes if using another controller to display the search results.
+        searchController.dimsBackgroundDuringPresentation = false
+
+        searchController.searchBar.sizeToFit()
+        tableView.tableHeaderView = searchController.searchBar
+
+        // Sets this view controller as presenting view controller for the search interface
+        definesPresentationContext = true
+        //search bar code
         
         tableView.reloadData()
     }
@@ -127,7 +152,8 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return companies.count
+        //return companies.count
+        return filteredData.count
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -141,10 +167,14 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         let postionLabel = cell.viewWithTag(3) as! UILabel
         let statusLabel = cell.viewWithTag(4) as! UILabel
         let locationLabel = cell.viewWithTag(5) as! UILabel
-        companyNameLabel.text = companies[indexPath.row].name
-        postionLabel.text = "Position: \(companies[indexPath.row].position!)"
-        statusLabel.text = "Status: \(companies[indexPath.row].jobStatus!)"
-        locationLabel.text = "Location: \(companies[indexPath.row].location!)"
+//        companyNameLabel.text = companies[indexPath.row].name
+//        postionLabel.text = "Position: \(companies[indexPath.row].position!)"
+//        statusLabel.text = "Status: \(companies[indexPath.row].jobStatus!)"
+//        locationLabel.text = "Location: \(companies[indexPath.row].location!)"
+        companyNameLabel.text = filteredData[indexPath.row].name
+        postionLabel.text = "Position: \(filteredData[indexPath.row].position!)"
+        statusLabel.text = "Status: \(filteredData[indexPath.row].jobStatus!)"
+        locationLabel.text = "Location: \(filteredData[indexPath.row].location!)"
         // Configure the cell...
 
         return cell
@@ -169,7 +199,8 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedApp = companies[indexPath.row]
+        //selectedApp = companies[indexPath.row]
+        selectedApp = filteredData[indexPath.row]
         rowIndex = indexPath.row
         self.performSegue(withIdentifier: "editApp", sender: self)
     }
@@ -195,6 +226,17 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
             }
         }
     }
+    
+    //Search function
+    func updateSearchResults(for searchController: UISearchController) {
+           if let searchText = searchController.searchBar.text {
+            filteredData = searchText.isEmpty ? companies :  companies.filter({(data: Applications) -> Bool in
+                return (data.name.range(of: searchText, options: .caseInsensitive) != nil || data.position.range(of: searchText, options: .caseInsensitive) != nil)
+               })
+
+               tableView.reloadData()
+           }
+       }
         
     func addApp(name: String, jobTitle: String, status: String, locationAddress: String, link: String, dateApp: Date, salary: String, Desc: String)
     {
@@ -214,6 +256,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         do{
             try context.save()
             companies.append(newApp)
+            filteredData = companies
         }
         catch{
             print("context save error")
@@ -237,7 +280,6 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
                 let applicationEdited = result as! Applications
                 if(selectedAppToEdit == applicationEdited)
                 {
-                    print("Test")
                     applicationEdited.name = name
                     applicationEdited.jobStatus = status
                     applicationEdited.location = locationAddress
@@ -248,6 +290,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
                     applicationEdited.desc = Desc
                     companies[index] = applicationEdited
                     try context.save()
+                    filteredData = companies
                 }
             }
         }
@@ -279,53 +322,4 @@ class ApplicationsViewController: UITableViewController, CreateApplication {
         }
         return numOfSections
     }
-    
-    
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
