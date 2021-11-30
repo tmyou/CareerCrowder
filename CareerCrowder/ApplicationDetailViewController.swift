@@ -109,7 +109,7 @@ class ApplicationDetailViewController: UIViewController {
 //                    alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
 //                    self.present(alert, animated: true, completion: nil)
 //                }
-        else if btnSelectStatus.titleLabel?.text == "Select Status..." {
+        else if !dayArr.contains(btnSelectStatus.titleLabel?.text ?? "")  {
             let alert = UIAlertController(title: "Select Status", message: "Please select an application status", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
