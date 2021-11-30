@@ -29,6 +29,9 @@
 		3F8D4A1F274B158C00F22761 /* ApplicationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D4A1E274B158C00F22761 /* ApplicationsModel.swift */; };
 		3F9053632745FF810077F0B0 /* ApplicationsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3F9053612745FF800077F0B0 /* ApplicationsModel.xcdatamodeld */; };
 		3FC66D152729ECAA0097A352 /* ApplicationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC66D142729ECAA0097A352 /* ApplicationEditViewController.swift */; };
+		80AEFEBB4BBC93C5DEDD0D3C /* Pods_CareerCrowderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C071890796E07D90D6C8FA8F /* Pods_CareerCrowderTests.framework */; };
+		90AF6B6FF26CDCC1E4DAC56E /* Pods_CareerCrowder_CareerCrowderUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 54F6EE9515EF5741511E254B /* Pods_CareerCrowder_CareerCrowderUITests.framework */; };
+		BE6E88A61A9D9B6B2224C209 /* Pods_CareerCrowder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F779CFD5C422C8576208450E /* Pods_CareerCrowder.framework */; };
 		F741B42327385C36002239C7 /* CalendarKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741B42227385C36002239C7 /* CalendarKitViewController.swift */; };
 		F741B42627385D2E002239C7 /* CalendarKit in Frameworks */ = {isa = PBXBuildFile; productRef = F741B42527385D2E002239C7 /* CalendarKit */; };
 		F741B42827387177002239C7 /* EKWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F741B42727387177002239C7 /* EKWrapper.swift */; };
@@ -57,6 +60,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11D9409110DA57443EFF511B /* Pods-CareerCrowder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowder.release.xcconfig"; path = "Target Support Files/Pods-CareerCrowder/Pods-CareerCrowder.release.xcconfig"; sourceTree = "<group>"; };
 		3F772B6A272AFDCE00B68668 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		3F772B6D272B47C100B68668 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Italic.ttf"; sourceTree = "<group>"; };
 		3F772B6E272B47C100B68668 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -85,8 +89,16 @@
 		3F8D4A1E274B158C00F22761 /* ApplicationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsModel.swift; sourceTree = "<group>"; };
 		3F9053622745FF810077F0B0 /* ApplicationsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ApplicationsModel.xcdatamodel; sourceTree = "<group>"; };
 		3FC66D142729ECAA0097A352 /* ApplicationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationEditViewController.swift; sourceTree = "<group>"; };
+		54F6EE9515EF5741511E254B /* Pods_CareerCrowder_CareerCrowderUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareerCrowder_CareerCrowderUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75758721DD36719C8659696A /* Pods-CareerCrowder-CareerCrowderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowder-CareerCrowderUITests.debug.xcconfig"; path = "Target Support Files/Pods-CareerCrowder-CareerCrowderUITests/Pods-CareerCrowder-CareerCrowderUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		75EA9A389D4505A82E21D03D /* Pods-CareerCrowder-CareerCrowderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowder-CareerCrowderUITests.release.xcconfig"; path = "Target Support Files/Pods-CareerCrowder-CareerCrowderUITests/Pods-CareerCrowder-CareerCrowderUITests.release.xcconfig"; sourceTree = "<group>"; };
+		7D600FB0638830C732B0D098 /* Pods-CareerCrowderTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowderTests.debug.xcconfig"; path = "Target Support Files/Pods-CareerCrowderTests/Pods-CareerCrowderTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7DE046A2EDB8BC18E6152C8B /* Pods-CareerCrowderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowderTests.release.xcconfig"; path = "Target Support Files/Pods-CareerCrowderTests/Pods-CareerCrowderTests.release.xcconfig"; sourceTree = "<group>"; };
+		9D21D0C71FCC80300958D5E4 /* Pods-CareerCrowder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CareerCrowder.debug.xcconfig"; path = "Target Support Files/Pods-CareerCrowder/Pods-CareerCrowder.debug.xcconfig"; sourceTree = "<group>"; };
+		C071890796E07D90D6C8FA8F /* Pods_CareerCrowderTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareerCrowderTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F741B42227385C36002239C7 /* CalendarKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarKitViewController.swift; sourceTree = "<group>"; };
 		F741B42727387177002239C7 /* EKWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKWrapper.swift; sourceTree = "<group>"; };
+		F779CFD5C422C8576208450E /* Pods_CareerCrowder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CareerCrowder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7FC1D2D271FF80800A4CD7D /* ApplicationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewController.swift; sourceTree = "<group>"; };
 		F7FC1D2F271FFAC400A4CD7D /* ApplicationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationDetailViewController.swift; sourceTree = "<group>"; };
 		F7FC1D3327202B8900A4CD7D /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
@@ -100,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F741B42627385D2E002239C7 /* CalendarKit in Frameworks */,
+				BE6E88A61A9D9B6B2224C209 /* Pods_CareerCrowder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +120,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80AEFEBB4BBC93C5DEDD0D3C /* Pods_CareerCrowderTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AF6B6FF26CDCC1E4DAC56E /* Pods_CareerCrowder_CareerCrowderUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +160,8 @@
 				3F855B992716344B00913FA3 /* CareerCrowderTests */,
 				3F855BA42716344B00913FA3 /* CareerCrowderUITests */,
 				3F855B812716344600913FA3 /* Products */,
+				BCE8BB5682607A944B3302A3 /* Pods */,
+				8DF1E3E467E1994D15A35312 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +218,29 @@
 			path = CareerCrowderUITests;
 			sourceTree = "<group>";
 		};
+		8DF1E3E467E1994D15A35312 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F779CFD5C422C8576208450E /* Pods_CareerCrowder.framework */,
+				54F6EE9515EF5741511E254B /* Pods_CareerCrowder_CareerCrowderUITests.framework */,
+				C071890796E07D90D6C8FA8F /* Pods_CareerCrowderTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCE8BB5682607A944B3302A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9D21D0C71FCC80300958D5E4 /* Pods-CareerCrowder.debug.xcconfig */,
+				11D9409110DA57443EFF511B /* Pods-CareerCrowder.release.xcconfig */,
+				75758721DD36719C8659696A /* Pods-CareerCrowder-CareerCrowderUITests.debug.xcconfig */,
+				75EA9A389D4505A82E21D03D /* Pods-CareerCrowder-CareerCrowderUITests.release.xcconfig */,
+				7D600FB0638830C732B0D098 /* Pods-CareerCrowderTests.debug.xcconfig */,
+				7DE046A2EDB8BC18E6152C8B /* Pods-CareerCrowderTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -208,9 +248,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F855BAA2716344B00913FA3 /* Build configuration list for PBXNativeTarget "CareerCrowder" */;
 			buildPhases = (
+				147F91EF3B53B2D52359A2DB /* [CP] Check Pods Manifest.lock */,
 				3F855B7C2716344600913FA3 /* Sources */,
 				3F855B7D2716344600913FA3 /* Frameworks */,
 				3F855B7E2716344600913FA3 /* Resources */,
+				891481EF6DA6FA189658BF7D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -228,6 +270,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F855BAD2716344B00913FA3 /* Build configuration list for PBXNativeTarget "CareerCrowderTests" */;
 			buildPhases = (
+				9BFC1AF0D3A465502BD2FAF5 /* [CP] Check Pods Manifest.lock */,
 				3F855B922716344B00913FA3 /* Sources */,
 				3F855B932716344B00913FA3 /* Frameworks */,
 				3F855B942716344B00913FA3 /* Resources */,
@@ -246,9 +289,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F855BB02716344B00913FA3 /* Build configuration list for PBXNativeTarget "CareerCrowderUITests" */;
 			buildPhases = (
+				FC4EC2ABA6B4829AA01B6034 /* [CP] Check Pods Manifest.lock */,
 				3F855B9D2716344B00913FA3 /* Sources */,
 				3F855B9E2716344B00913FA3 /* Frameworks */,
 				3F855B9F2716344B00913FA3 /* Resources */,
+				9490B94373FA2D72213DC7D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -342,6 +387,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		147F91EF3B53B2D52359A2DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CareerCrowder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		891481EF6DA6FA189658BF7D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder/Pods-CareerCrowder-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder/Pods-CareerCrowder-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder/Pods-CareerCrowder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9490B94373FA2D72213DC7D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder-CareerCrowderUITests/Pods-CareerCrowder-CareerCrowderUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder-CareerCrowderUITests/Pods-CareerCrowder-CareerCrowderUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CareerCrowder-CareerCrowderUITests/Pods-CareerCrowder-CareerCrowderUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9BFC1AF0D3A465502BD2FAF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CareerCrowderTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC4EC2ABA6B4829AA01B6034 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CareerCrowder-CareerCrowderUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3F855B7C2716344600913FA3 /* Sources */ = {
@@ -533,6 +681,7 @@
 		};
 		3F855BAB2716344B00913FA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D21D0C71FCC80300958D5E4 /* Pods-CareerCrowder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -551,6 +700,7 @@
 		};
 		3F855BAC2716344B00913FA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11D9409110DA57443EFF511B /* Pods-CareerCrowder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -569,6 +719,7 @@
 		};
 		3F855BAE2716344B00913FA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D600FB0638830C732B0D098 /* Pods-CareerCrowderTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -590,6 +741,7 @@
 		};
 		3F855BAF2716344B00913FA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DE046A2EDB8BC18E6152C8B /* Pods-CareerCrowderTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -611,6 +763,7 @@
 		};
 		3F855BB12716344B00913FA3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75758721DD36719C8659696A /* Pods-CareerCrowder-CareerCrowderUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -630,6 +783,7 @@
 		};
 		3F855BB22716344B00913FA3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75EA9A389D4505A82E21D03D /* Pods-CareerCrowder-CareerCrowderUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
