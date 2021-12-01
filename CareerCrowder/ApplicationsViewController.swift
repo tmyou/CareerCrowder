@@ -122,7 +122,15 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
     override func viewDidDisappear(_ animated: Bool) {
         let nav = self.tabBarController?.viewControllers![2] as! UINavigationController
         let offersTab = nav.topViewController as! OfferViewController
-        offersTab.companiesListApp = companies
+        var offers = [Applications]()
+        for company in companies
+        {
+            if company.jobStatus == "Offered"
+            {
+                offers.append(company)
+            }
+        }
+        offersTab.companiesListApp = offers
     }
 
     // MARK: - Table view data source
@@ -167,10 +175,6 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
         let postionLabel = cell.viewWithTag(3) as! UILabel
         let statusLabel = cell.viewWithTag(4) as! UILabel
         let locationLabel = cell.viewWithTag(5) as! UILabel
-//        companyNameLabel.text = companies[indexPath.row].name
-//        postionLabel.text = "Position: \(companies[indexPath.row].position!)"
-//        statusLabel.text = "Status: \(companies[indexPath.row].jobStatus!)"
-//        locationLabel.text = "Location: \(companies[indexPath.row].location!)"
         companyNameLabel.text = filteredData[indexPath.row].name
         postionLabel.text = "Position: \(filteredData[indexPath.row].position!)"
         statusLabel.text = "Status: \(filteredData[indexPath.row].jobStatus!)"
