@@ -54,7 +54,7 @@ class OfferViewController: UIViewController {
         if(companiesList.count > 1){
         let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
         for company in companiesList {
-            actionSheetAlert.addAction(UIAlertAction(title: "\(company.name!): \n \(company.position!)", style: .default, handler: { _ in self.CompanyName1.text = "Company Name: \n\(company.name!)";  self.Position1.text = "Position: \n\(company.position!)"; self.Location1.text = "Location: \n\(company.location!)"; self.Salary1.text = "Salary: \n\(company.salary!)"; self.Desc1.text = "Description: \n\(company.desc!)"
+            actionSheetAlert.addAction(UIAlertAction(title: "\(company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName1.text = "Company Name: \n\(company.name!)";  self.Position1.text = "Position: \n\(company.position!)"; self.Location1.text = "Location: \n\(company.location!)"; self.Salary1.text = "Salary: \n\(company.salary!)"; self.Desc1.text = "Description: \n\(company.desc!)"
                 //self.company1Num = company
             }))
         }
@@ -73,7 +73,7 @@ class OfferViewController: UIViewController {
         if(companiesList.count > 1){
         let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
         for company in companiesList {
-            actionSheetAlert.addAction(UIAlertAction(title: "\( company.name!)", style: .default, handler: { _ in self.CompanyName2.text = "Company Name: \n\(company.name!)";  self.Position2.text = "Position: \n\(company.position!)"; self.Location2.text = "Location: \n\(company.location!)"; self.Salary2.text = "Salary: \n\(company.salary!)"; self.Desc2.text = "Description: \n\(company.desc!)"
+            actionSheetAlert.addAction(UIAlertAction(title: "\( company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName2.text = "Company Name: \n\(company.name!)";  self.Position2.text = "Position: \n\(company.position!)"; self.Location2.text = "Location: \n\(company.location!)"; self.Salary2.text = "Salary: \n\(company.salary!)"; self.Desc2.text = "Description: \n\(company.desc!)"
             }))
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
