@@ -221,6 +221,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
             {
                 context.delete(companies[indexPath.row])
                 companies.remove(at: indexPath.row)
+                filteredData = companies
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 try context.save()
             }
