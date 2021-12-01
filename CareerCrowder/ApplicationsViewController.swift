@@ -230,6 +230,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
                 print("Failed to delete data")
             }
         }
+        tableView.reloadData()
     }
     
     //Search function
