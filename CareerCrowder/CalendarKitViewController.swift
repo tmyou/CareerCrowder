@@ -12,7 +12,9 @@ import EventKitUI
 
 class CalendarKitViewController: DayViewController, EKEventEditViewDelegate {
     
-    private let eventStore = EKEventStore()
+    let eventStore = EKEventStore()
+    
+    var time = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,27 +97,27 @@ class CalendarKitViewController: DayViewController, EKEventEditViewDelegate {
             
         }
         reloadData()
+    }    
+    
+    @IBAction func addEvent(_ sender: Any) {
+        eventStore.requestAccess( to: EKEntityType.event, completion:{(granted, error) in
+                    DispatchQueue.main.async {
+                        if (granted) && (error == nil) {
+                            let event = EKEvent(eventStore: self.eventStore)
+                            event.title = "New Event"
+                            event.startDate = self.time
+                            event.url = URL(string: "")
+                            event.endDate = self.time + 3600
+                            let eventController = EKEventEditViewController()
+                            eventController.event = event
+                            eventController.eventStore = self.eventStore
+                            eventController.editViewDelegate = self
+                            self.present(eventController, animated: true, completion: nil)
+                            
+                        }
+                    }
+                })
     }
-    
-    
-    
-    
-    
-    
-//    @IBAction func addEventButton(_ sender: Any) {
-//        newEventFromButton(editingEvent.ekEvent)
-//    }
-//
-//    func newEventFromButton(_ ekEvent: EKEvent) {
-//        let editingViewController = EKEventEditViewController()
-//        editingViewController.editViewDelegate = self
-//        editingViewController.event = ekEvent
-//        editingViewController.eventStore = eventStore
-//        present(editingViewController, animated: true, completion: nil)
-//    }
-    
-    
-    
     
     
     
