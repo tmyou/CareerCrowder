@@ -71,8 +71,10 @@ class OfferViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        dataSource = [String]()
         companiesList = companiesListApp
         companiesCount = companiesListApp.count
+        clearPage()
     }
     
     // ------------------------------------------------------------------------
@@ -114,17 +116,6 @@ class OfferViewController: UIViewController {
     
     @IBAction func selectedOffer1(_ sender: Any) {
         if(companiesList.count > 1){
-//        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
-//        for company in companiesList {
-//            actionSheetAlert.addAction(UIAlertAction(title: "\(company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName1.text = "Company Name: \n\(company.name!)";  self.Position1.text = "Position: \n\(company.position!)"; self.Location1.text = "Location: \n\(company.location!)"; self.Salary1.text = "Salary: \n\(company.salary!)"; self.Desc1.text = "Description: \n\(company.desc!)"
-//                //self.company1Num = company
-//            }))
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        actionSheetAlert.addAction(cancelAction)
-//        self.present(actionSheetAlert, animated: true, completion: nil)
-            //print(companiesList)
-            //dataSource = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
             for company in companiesList {
                 if !dataSource.contains("\(company.name!): \(company.position!)") {
                     dataSource.append("\(company.name!): \(company.position!)")
@@ -142,14 +133,6 @@ class OfferViewController: UIViewController {
     
     @IBAction func selectOffer2(_ sender: Any) {
         if(companiesList.count > 1){
-//        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
-//        for company in companiesList {
-//            actionSheetAlert.addAction(UIAlertAction(title: "\( company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName2.text = "Company Name: \n\(company.name!)";  self.Position2.text = "Position: \n\(company.position!)"; self.Location2.text = "Location: \n\(company.location!)"; self.Salary2.text = "Salary: \n\(company.salary!)"; self.Desc2.text = "Description: \n\(company.desc!)"
-//            }))
-//        }
-//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-//        actionSheetAlert.addAction(cancelAction)
-//        self.present(actionSheetAlert, animated: true, completion: nil)
             for company in companiesList {
                 if !dataSource.contains("\(company.name!): \(company.position!)") {
                     dataSource.append("\(company.name!): \(company.position!)")
@@ -163,6 +146,22 @@ class OfferViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+    
+    func clearPage ()
+    {
+        CompanyName1.text = ""
+        Position1.text = ""
+        Location1.text = ""
+        Salary1.text = ""
+        Desc1.text = ""
+        btnSelectOffer1.setTitle("Select Offer", for: .normal)
+        CompanyName2.text = ""
+        Position2.text = ""
+        Location2.text = ""
+        Salary2.text = ""
+        Desc2.text = ""
+        btnSelectOffer2.setTitle("Select Offer", for: .normal)
     }
     
     
