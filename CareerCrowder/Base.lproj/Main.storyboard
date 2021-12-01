@@ -73,7 +73,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Applications" id="riM-Qu-XDc">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="yFZ-z3-qQh">
-                            <color key="tintColor" red="0.1960784314" green="0.87843137250000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="CreateApplication:" destination="aTr-6x-xvE" id="Itg-wb-gCr"/>
                             </connections>
@@ -426,13 +426,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ4-AH-e1K">
-                                <rect key="frame" x="0.0" y="44" width="412" height="643"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-Cx-SQc" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="412" height="643"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kU1-pZ-WfD" userLabel="Select1">
-                                                <rect key="frame" x="43.666666666666657" y="25" width="125" height="36"/>
+                                                <rect key="frame" x="44.666666666666657" y="25" width="125" height="36"/>
                                                 <color key="backgroundColor" red="0.1960784314" green="0.87843137250000003" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="mqE-bP-EsM"/>
@@ -446,7 +446,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhf-ZD-acn" userLabel="Select2">
-                                                <rect key="frame" x="243.66666666666663" y="25" width="125" height="36"/>
+                                                <rect key="frame" x="244.66666666666663" y="25" width="125" height="36"/>
                                                 <color key="backgroundColor" red="0.19607843137254902" green="0.8784313725490196" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="e1D-yp-dmw"/>
