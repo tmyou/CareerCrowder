@@ -57,8 +57,8 @@ class ApplicationEditViewController: UIViewController {
         jobTitle.text = selectedApp.position
         jobLocation.text = selectedApp.location
         //status.text = selectedApp.jobStatus
-        //btnSelectStatus.setTitle(selectedApp.jobStatus, for: .normal)
-        btnSelectStatus.titleLabel?.text = selectedApp.jobStatus
+        btnSelectStatus.setTitle(selectedApp.jobStatus, for: .normal)
+        //btnSelectStatus.titleLabel?.text = selectedApp.jobStatus
         jobLink.text = selectedApp.appLink
         dateApp.date = selectedApp.dateApp
         salary.text = selectedApp.salary
