@@ -218,7 +218,6 @@ extension ApplicationDetailViewController: UITableViewDelegate, UITableViewDataS
         }
         //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
         selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
-        print(dataSource[indexPath.row])
         removeTransparentView()
     }
 }

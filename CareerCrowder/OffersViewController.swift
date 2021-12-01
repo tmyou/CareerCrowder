@@ -7,7 +7,24 @@
 
 import UIKit
 
+
+
 class OfferViewController: UIViewController {
+    
+    // ------------------------------------------------------------------------
+    
+    @IBOutlet var btnSelectOffer1: UIButton!
+    
+    @IBOutlet var btnSelectOffer2: UIButton!
+    
+    let transparentView = UIView()
+    let ststableView = UITableView()
+    
+    var selectedButton = UIButton()
+    
+    var dataSource = [String]()
+    
+    // ------------------------------------------------------------------------
     
     
     @IBOutlet weak var CompanyName1: UILabel!
@@ -42,6 +59,15 @@ class OfferViewController: UIViewController {
         super.viewDidLoad()
         print(companiesListApp)
         // Do any additional setup after loading the view.
+        // ------------------------------------------------------------------------
+        
+        ststableView.delegate = self
+        ststableView.dataSource = self
+        ststableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
+        print(companiesList.count)
+        //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
+        
+        // ------------------------------------------------------------------------
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,21 +75,66 @@ class OfferViewController: UIViewController {
         companiesCount = companiesListApp.count
     }
     
+    // ------------------------------------------------------------------------
+    
+    func addTransparentView(frames: CGRect) {
+        let window = UIApplication.shared.keyWindow
+        transparentView.frame = window?.frame ?? self.view.frame
+        self.view.addSubview(transparentView)
+        
+        ststableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        self.view.addSubview(ststableView)
+        ststableView.layer.cornerRadius = 5
+        
+        transparentView.backgroundColor = UIColor.black.withAlphaComponent(0.9)
+        ststableView.reloadData()
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeTransparentView))
+        transparentView.addGestureRecognizer(tapgesture)
+        transparentView.alpha = 0
+        if selectedButton == btnSelectOffer1 {
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {self.transparentView.alpha = 0.5
+                self.ststableView.frame = CGRect(x: frames.origin.x - 10, y: frames.origin.y + frames.height + 70, width: frames.width + 220, height: 150)
+            }, completion: nil)
+        }
+        if selectedButton == btnSelectOffer2 {
+            UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {self.transparentView.alpha = 0.5
+                self.ststableView.frame = CGRect(x: frames.origin.x - 210, y: frames.origin.y + frames.height + 70, width: frames.width + 220, height: 150)
+            }, completion: nil)
+        }
+        
+    }
+    
+    @objc func removeTransparentView() {
+        let frames = selectedButton.frame
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {self.transparentView.alpha = 0.0
+            self.ststableView.frame = CGRect(x: frames.origin.x, y: frames.origin.y + frames.height, width: frames.width, height: 0)
+        }, completion: nil)
+    }
+    // ------------------------------------------------------------------------
     
     @IBAction func selectedOffer1(_ sender: Any) {
         if(companiesList.count > 1){
-        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
-        for company in companiesList {
-            actionSheetAlert.addAction(UIAlertAction(title: "\(company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName1.text = "Company Name: \n\(company.name!)";  self.Position1.text = "Position: \n\(company.position!)"; self.Location1.text = "Location: \n\(company.location!)"; self.Salary1.text = "Salary: \n\(company.salary!)"; self.Desc1.text = "Description: \n\(company.desc!)"
-                //self.company1Num = company
-            }))
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheetAlert.addAction(cancelAction)
-        self.present(actionSheetAlert, animated: true, completion: nil)
+//        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
+//        for company in companiesList {
+//            actionSheetAlert.addAction(UIAlertAction(title: "\(company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName1.text = "Company Name: \n\(company.name!)";  self.Position1.text = "Position: \n\(company.position!)"; self.Location1.text = "Location: \n\(company.location!)"; self.Salary1.text = "Salary: \n\(company.salary!)"; self.Desc1.text = "Description: \n\(company.desc!)"
+//                //self.company1Num = company
+//            }))
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        actionSheetAlert.addAction(cancelAction)
+//        self.present(actionSheetAlert, animated: true, completion: nil)
+            //print(companiesList)
+            //dataSource = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
+            for company in companiesList {
+                if !dataSource.contains("\(company.name!): \(company.position!)") {
+                    dataSource.append("\(company.name!): \(company.position!)")
+                }
+            }
+            selectedButton = btnSelectOffer1
+            addTransparentView(frames: btnSelectOffer1.frame)
         }
         else{
-            let alert = UIAlertController(title: "Not enough job applications", message: "Please create at least 2 job application to compare!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Not enough offers", message: "You need at least 2 job offers to compare!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
         }
@@ -71,17 +142,24 @@ class OfferViewController: UIViewController {
     
     @IBAction func selectOffer2(_ sender: Any) {
         if(companiesList.count > 1){
-        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
-        for company in companiesList {
-            actionSheetAlert.addAction(UIAlertAction(title: "\( company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName2.text = "Company Name: \n\(company.name!)";  self.Position2.text = "Position: \n\(company.position!)"; self.Location2.text = "Location: \n\(company.location!)"; self.Salary2.text = "Salary: \n\(company.salary!)"; self.Desc2.text = "Description: \n\(company.desc!)"
-            }))
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheetAlert.addAction(cancelAction)
-        self.present(actionSheetAlert, animated: true, completion: nil)
+//        let actionSheetAlert = UIAlertController(title: "Pick an application", message: "", preferredStyle: .actionSheet)
+//        for company in companiesList {
+//            actionSheetAlert.addAction(UIAlertAction(title: "\( company.name!): \(company.position!)", style: .default, handler: { _ in self.CompanyName2.text = "Company Name: \n\(company.name!)";  self.Position2.text = "Position: \n\(company.position!)"; self.Location2.text = "Location: \n\(company.location!)"; self.Salary2.text = "Salary: \n\(company.salary!)"; self.Desc2.text = "Description: \n\(company.desc!)"
+//            }))
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        actionSheetAlert.addAction(cancelAction)
+//        self.present(actionSheetAlert, animated: true, completion: nil)
+            for company in companiesList {
+                if !dataSource.contains("\(company.name!): \(company.position!)") {
+                    dataSource.append("\(company.name!): \(company.position!)")
+                }
+            }
+            selectedButton = btnSelectOffer2
+            addTransparentView(frames: btnSelectOffer2.frame)
         }
         else{
-            let alert = UIAlertController(title: "Not enough job applications", message: "Please create at least 2 job application to compare!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Not enough offers", message: "You need at least 2 job offers to compare!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
         }
@@ -89,6 +167,7 @@ class OfferViewController: UIViewController {
     
     
 
+    
     /*
     // MARK: - Navigation
 
@@ -100,3 +179,62 @@ class OfferViewController: UIViewController {
     */
 
 }
+
+// ------------------------------------------------------------------------
+
+extension OfferViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataSource.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ststableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        cell.textLabel?.text = dataSource[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+     }
+
+     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+         return UITableView.automaticDimension
+     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let attributedTitle = btnSelectStatus.attributedTitle(for: .normal) {
+//            let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
+//            mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: dataSource[indexPath.row])
+//            btnSelectStatus.setAttributedTitle(mutableAttributedTitle, for: .normal)
+//            //btnSelectStatus.setTitleColor(UIColor.red, for: .normal)
+//            //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
+//        }
+//        //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
+//        selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
+        
+        if selectedButton == btnSelectOffer1 {
+            let splitarr = String(dataSource[indexPath.row]).components(separatedBy: ": ")
+            for company in companiesList {
+                if (company.name == splitarr[0]) && (company.position == splitarr[1]) {
+                    CompanyName1.text = "Company Name: \n\(company.name!)";  Position1.text = "Position: \n\(company.position!)"; Location1.text = "Location: \n\(company.location!)"; Salary1.text = "Salary: \n\(company.salary!)"; Desc1.text = "Description: \n\(company.desc!)"
+                    btnSelectOffer1.setTitle(company.name, for: .normal)
+                }
+                
+            }
+            
+        }
+        if selectedButton == btnSelectOffer2 {
+            let splitarr = String(dataSource[indexPath.row]).components(separatedBy: ": ")
+            for company in companiesList {
+                if (company.name == splitarr[0]) && (company.position == splitarr[1]) {
+                    CompanyName2.text = "Company Name: \n\(company.name!)";  Position2.text = "Position: \n\(company.position!)"; Location2.text = "Location: \n\(company.location!)"; Salary2.text = "Salary: \n\(company.salary!)"; Desc2.text = "Description: \n\(company.desc!)"
+                    btnSelectOffer2.setTitle(company.name, for: .normal)
+                }
+                
+            }
+        }
+        removeTransparentView()
+    }
+}
+
+// ------------------------------------------------------------------------
