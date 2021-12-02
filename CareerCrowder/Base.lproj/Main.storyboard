@@ -426,13 +426,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZ4-AH-e1K">
-                                <rect key="frame" x="0.0" y="44" width="412" height="643"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="643"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QlD-Cx-SQc" userLabel="ContentView">
-                                        <rect key="frame" x="0.0" y="0.0" width="412" height="643"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="643"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kU1-pZ-WfD" userLabel="Select1">
-                                                <rect key="frame" x="43.666666666666657" y="25" width="125" height="36"/>
+                                                <rect key="frame" x="44.666666666666657" y="25" width="125" height="36"/>
                                                 <color key="backgroundColor" red="0.050980392156862744" green="0.45098039215686275" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="mqE-bP-EsM"/>
@@ -446,7 +446,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mhf-ZD-acn" userLabel="Select2">
-                                                <rect key="frame" x="243.66666666666663" y="25" width="125" height="36"/>
+                                                <rect key="frame" x="244.66666666666663" y="25" width="125" height="36"/>
                                                 <color key="backgroundColor" red="0.050980392156862744" green="0.45098039215686275" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="125" id="e1D-yp-dmw"/>
@@ -679,17 +679,17 @@
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Job Title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CMK-vf-ZwX">
                                                 <rect key="frame" x="20" y="95" width="374" height="40"/>
                                                 <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="organization-title"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2vC-TW-voj">
                                                 <rect key="frame" x="20" y="165" width="374" height="40"/>
                                                 <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="location"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Link to Job Application" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8SU-Nf-fFG">
                                                 <rect key="frame" x="20" y="367" width="374" height="40"/>
                                                 <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="25"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" textContentType="url"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9tM-Ho-jBo">
                                                 <rect key="frame" x="20" y="754" width="374" height="40"/>
@@ -724,9 +724,23 @@
                                                     <action selector="onClickSelectStatus:" destination="vFU-LT-Il5" eventType="touchUpInside" id="oPx-SU-rlt"/>
                                                 </connections>
                                             </button>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" scrollEnabled="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ArQ-rl-F37" userLabel="UrlLink">
+                                                <rect key="frame" x="20" y="367" width="374" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="374" id="Xes-YV-bZg"/>
+                                                    <constraint firstAttribute="height" constant="40" id="YWH-Z7-2Dc"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="labelColor"/>
+                                                <fontDescription key="fontDescription" name="MalayalamSangamMN" family="Malayalam Sangam MN" pointSize="25"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" textContentType="url"/>
+                                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                            </textView>
                                         </subviews>
                                         <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstItem="ArQ-rl-F37" firstAttribute="top" secondItem="bd0-mU-XHg" secondAttribute="bottom" constant="30" id="0A9-e4-bEo"/>
+                                            <constraint firstItem="ArQ-rl-F37" firstAttribute="leading" secondItem="Eoq-EW-8DN" secondAttribute="leading" constant="20" symbolic="YES" id="1DF-bm-gzB"/>
                                             <constraint firstItem="ujK-eh-Y85" firstAttribute="leading" secondItem="Eoq-EW-8DN" secondAttribute="leading" id="2Qz-OT-FQn"/>
                                             <constraint firstItem="8SU-Nf-fFG" firstAttribute="top" secondItem="bd0-mU-XHg" secondAttribute="bottom" constant="30" id="6Lv-Xo-psH"/>
                                             <constraint firstAttribute="trailing" secondItem="ujK-eh-Y85" secondAttribute="trailing" id="75U-Ze-p4v"/>
@@ -748,9 +762,11 @@
                                             <constraint firstItem="bd0-mU-XHg" firstAttribute="top" secondItem="2vC-TW-voj" secondAttribute="bottom" constant="30" id="Ufj-gM-EtM"/>
                                             <constraint firstItem="ujK-eh-Y85" firstAttribute="leading" secondItem="Eoq-EW-8DN" secondAttribute="leading" id="Zv1-wX-sMA"/>
                                             <constraint firstItem="w6T-Bz-eya" firstAttribute="top" secondItem="8SU-Nf-fFG" secondAttribute="bottom" constant="8" symbolic="YES" id="coE-Lo-IK7"/>
+                                            <constraint firstAttribute="trailing" secondItem="ArQ-rl-F37" secondAttribute="trailing" constant="20" symbolic="YES" id="cvt-D3-jRl"/>
                                             <constraint firstAttribute="trailing" secondItem="9tM-Ho-jBo" secondAttribute="trailing" constant="20" symbolic="YES" id="eT5-VV-sK5"/>
                                             <constraint firstAttribute="trailing" secondItem="8SU-Nf-fFG" secondAttribute="trailing" constant="20" symbolic="YES" id="nPd-PT-ZKp"/>
                                             <constraint firstItem="TLw-Te-7Gi" firstAttribute="leading" secondItem="Eoq-EW-8DN" secondAttribute="leading" constant="20" symbolic="YES" id="ow2-Em-i14"/>
+                                            <constraint firstItem="w6T-Bz-eya" firstAttribute="top" secondItem="ArQ-rl-F37" secondAttribute="bottom" constant="8" symbolic="YES" id="tkb-9P-UxM"/>
                                             <constraint firstItem="2vC-TW-voj" firstAttribute="leading" secondItem="Eoq-EW-8DN" secondAttribute="leading" constant="20" symbolic="YES" id="wLD-Jq-eJX"/>
                                             <constraint firstAttribute="trailing" secondItem="TLw-Te-7Gi" secondAttribute="trailing" constant="20" symbolic="YES" id="x98-76-Z7T"/>
                                             <constraint firstItem="TLw-Te-7Gi" firstAttribute="top" secondItem="Eoq-EW-8DN" secondAttribute="top" constant="25" id="xnf-Wr-ddI"/>
@@ -781,9 +797,9 @@
                             <constraint firstItem="HrK-3e-gPj" firstAttribute="leading" secondItem="bQn-O6-eaC" secondAttribute="leading" id="vdx-Px-F03"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Edit Application" id="Ysy-dm-pat">
+                    <navigationItem key="navigationItem" title="Application Details" id="Ysy-dm-pat">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="DLN-tK-sLi"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="99k-J3-pQ3">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="99k-J3-pQ3">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveChanges:" destination="vFU-LT-Il5" id="vXB-O9-4av"/>
@@ -796,16 +812,18 @@
                         <outlet property="companyName" destination="TLw-Te-7Gi" id="5LE-E7-g7S"/>
                         <outlet property="dateApp" destination="ujK-eh-Y85" id="Sqr-bC-xD2"/>
                         <outlet property="desc" destination="9tM-Ho-jBo" id="0TP-Lk-1PB"/>
+                        <outlet property="editSaveButton" destination="99k-J3-pQ3" id="q1l-Tn-cmg"/>
                         <outlet property="jobLink" destination="8SU-Nf-fFG" id="7VV-4e-NZF"/>
                         <outlet property="jobLocation" destination="2vC-TW-voj" id="Sc0-2p-ESi"/>
                         <outlet property="jobTitle" destination="CMK-vf-ZwX" id="6q4-31-J9t"/>
+                        <outlet property="jobUrL" destination="ArQ-rl-F37" id="nHz-6a-yO2"/>
                         <outlet property="salary" destination="6FC-be-Cjd" id="HGC-5h-yRK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtX-Rz-bs6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <menu title="Sub Menu" id="hpj-ji-fob"/>
             </objects>
-            <point key="canvasLocation" x="4536.231884057971" y="-234.78260869565219"/>
+            <point key="canvasLocation" x="4534.7826086956529" y="-234.78260869565219"/>
         </scene>
         <!--Offers-->
         <scene sceneID="H0Y-ea-zwp">
@@ -897,6 +915,9 @@
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="doc.plaintext" catalog="system" width="115" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -18,8 +18,6 @@ class ApplicationEditViewController: UIViewController {
     
     @IBOutlet weak var jobLocation: UITextField!
     
-    @IBOutlet weak var status: UITextField!
-    
     @IBOutlet weak var jobLink: UITextField!
     
     @IBOutlet weak var dateApp: UIDatePicker!
@@ -28,6 +26,10 @@ class ApplicationEditViewController: UIViewController {
     
     @IBOutlet weak var desc: UITextField!
     
+    @IBOutlet weak var editSaveButton: UIBarButtonItem!
+    
+    
+    @IBOutlet weak var jobUrL: UITextView!
     // ------------------------------------------------------------------------
     
     @IBOutlet var btnSelectStatus: UIButton!
@@ -63,6 +65,25 @@ class ApplicationEditViewController: UIViewController {
         dateApp.date = selectedApp.dateApp
         salary.text = selectedApp.salary
         desc.text = selectedApp.desc
+        jobUrL.text = selectedApp.appLink
+        if selectedApp.appLink == ""{
+            jobUrL.text = "Link to Job Application"
+            jobUrL.textColor = UIColor.lightGray
+        }
+        
+        //Makes it uneditable
+        self.editSaveButton.title = "Edit"
+        self.companyName.isEnabled = false
+        self.jobTitle.isEnabled = false
+        self.jobLocation.isEnabled = false
+        self.jobLink.isEnabled = false
+        self.jobLink.isHidden = true
+        self.dateApp.isEnabled = false
+        self.salary.isEnabled = false
+        self.desc.isEnabled = false
+        self.btnSelectStatus.isEnabled = false
+        self.jobUrL.isEditable = false
+        //Makes it uneditable
         
         // ------------------------------------------------------------------------
         
@@ -74,37 +95,44 @@ class ApplicationEditViewController: UIViewController {
         // ------------------------------------------------------------------------
     }
     
-    
-    @IBAction func changeStatus(_ sender: Any) {
-        let actionSheetAlert = UIAlertController(title: "Pick a Status", message: "", preferredStyle: .actionSheet)
-        for dayOfWeek in 0...4 {
-            actionSheetAlert.addAction(UIAlertAction(title: "\(dayArr[dayOfWeek])", style: .default, handler: { _ in self.status.text = "\(self.dayArr[dayOfWeek])"
-                self.numberOfDay = dayOfWeek
-            }))
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheetAlert.addAction(cancelAction)
-        self.present(actionSheetAlert, animated: true, completion: nil)
-    }
-    
     @IBAction func saveChanges(_ sender: Any) {
-        if companyName.text?.count == 0 || jobTitle.text?.count == 0 || jobLocation.text?.count == 0 
+        //Button pressed to create changes
+        self.isEditing = !self.isEditing
+        if self.isEditing
         {
-            let alert = UIAlertController(title: "Empty Text", message: "Please fill out all text fields", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-        else if btnSelectStatus.titleLabel?.text == "Select Status..." {
-            let alert = UIAlertController(title: "Select Status", message: "Please select an application status", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-            self.present(alert, animated: true, completion: nil)
-        }
-        
-       else{
-        delegate?.editApp(name: companyName.text!, jobTitle: jobTitle.text!, status: (btnSelectStatus.titleLabel?.text)!, locationAddress: jobLocation.text!, link: jobLink.text!, dateApp: dateApp.date, salary: salary.text!, Desc: desc.text!, index: index, selectedAppToEdit: selectedApp)
-            self.navigationController?.popViewController(animated: true)
-        }
+            self.title = "Edit Application"
+            self.editSaveButton.title = "Save"
+            self.companyName.isEnabled = true
+            self.jobTitle.isEnabled = true
+            self.jobLocation.isEnabled = true
+            self.jobLink.isEnabled = true
+            self.jobLink.isHidden = false
+            self.dateApp.isEnabled = true
+            self.salary.isEnabled = true
+            self.desc.isEnabled = true
+            self.btnSelectStatus.isEnabled = true
+            self.jobUrL.isHidden = true
+                 }
+         else{
+                if companyName.text?.count == 0 || jobTitle.text?.count == 0 || jobLocation.text?.count == 0
+                    {
+                        let alert = UIAlertController(title: "Empty Text", message: "Please fill out all text fields", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+            
+                    else if btnSelectStatus.titleLabel?.text == "Select Status..." {
+                        let alert = UIAlertController(title: "Select Status", message: "Please select an application status", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+            
+                else
+                {
+                    delegate?.editApp(name: companyName.text!, jobTitle: jobTitle.text!, status: (btnSelectStatus.titleLabel?.text)!, locationAddress: jobLocation.text!, link: jobLink.text!, dateApp: dateApp.date, salary: salary.text!, Desc: desc.text!, index: index, selectedAppToEdit: selectedApp)
+                        self.navigationController?.popViewController(animated: true)
+                }
+             }
     }
     
     // ------------------------------------------------------------------------
