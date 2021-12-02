@@ -101,7 +101,7 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
     
     override func viewDidAppear(_ animated: Bool) {
         let backBarBtnItem = UIBarButtonItem()
-            backBarBtnItem.title = "Cancel"
+            backBarBtnItem.title = "Back"
         backBarBtnItem.tintColor = .white
         self.navigationItem.backBarButtonItem = backBarBtnItem
     }
