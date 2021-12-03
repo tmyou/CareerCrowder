@@ -8,27 +8,6 @@
 import UIKit
 import CoreData
 
-struct Application{
-    init(){
-        name = ""
-        position = ""
-        location = ""
-        JobStatus = ""
-        appLink = ""
-        dateApp = Date.init()
-        salary = ""
-        desc = ""
-    }
-    var name: String
-    var position: String
-    var location: String
-    var JobStatus: String
-    var appLink: String
-    var dateApp: Date
-    var salary: String
-    var desc: String
-}
-
 var companies = [Applications]()
 
 class ApplicationsViewController: UITableViewController, CreateApplication, UISearchResultsUpdating {
@@ -78,15 +57,8 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
         
         //search bar code
         filteredData = companies
-        
-        // Initializing with searchResultsController set to nil means that
-        // searchController will use this view controller to display the search results
         searchController = UISearchController(searchResultsController: nil)
         searchController.searchResultsUpdater = self
-
-        // If we are using this same view controller to present the results
-        // dimming it out wouldn't make sense. Should probably only set
-        // this to yes if using another controller to display the search results.
         searchController.dimsBackgroundDuringPresentation = false
 
         searchController.searchBar.sizeToFit()
@@ -136,31 +108,10 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        // TODO: FIX for deletion bugs
-//        var numOfSections: Int = 0
-//        if companies.count > 0
-//        {
-//            tableView.separatorStyle = .singleLine
-//            numOfSections            = 1
-//            tableView.backgroundView = nil
-//        }
-//        else
-//        {
-//            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-//            noDataLabel.text          = "No applications"
-//            noDataLabel.textColor     = UIColor.black
-//            noDataLabel.textAlignment = .center
-//            tableView.backgroundView  = noDataLabel
-//            tableView.separatorStyle  = .none
-//        }
-//        return numOfSections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        //return companies.count
         return filteredData.count
     }
     
@@ -265,7 +216,6 @@ class ApplicationsViewController: UITableViewController, CreateApplication, UISe
             filteredData = companies
         }
         catch{
-            print("context save error")
             let alert = UIAlertController(title: "Error in Saving", message: "Please try again", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
