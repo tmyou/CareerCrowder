@@ -49,9 +49,6 @@ class ApplicationEditViewController: UIViewController {
     var delegate: CreateApplication?
     var index = 0
     
-    var dayArr = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
-    var numberOfDay = 0
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -189,10 +186,7 @@ extension ApplicationEditViewController: UITableViewDelegate, UITableViewDataSou
             let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
             mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: dataSource[indexPath.row])
             btnSelectStatus.setAttributedTitle(mutableAttributedTitle, for: .normal)
-            //btnSelectStatus.setTitleColor(UIColor.red, for: .normal)
-            //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
         }
-        //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
         selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
         removeTransparentView()
     }

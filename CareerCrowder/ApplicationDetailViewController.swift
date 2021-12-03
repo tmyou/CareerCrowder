@@ -7,7 +7,6 @@
 
 import UIKit
 import CoreData
-//import DropDown
 
 // ------------------------------------------------------------------------
 
@@ -41,8 +40,6 @@ class ApplicationDetailViewController: UIViewController {
     
     @IBOutlet weak var JobTitle: UITextField!
     
-    @IBOutlet weak var Status: UITextField!
-    
     @IBOutlet weak var Location: UITextField!
     
     @IBOutlet weak var jobLink: UITextField!
@@ -55,8 +52,7 @@ class ApplicationDetailViewController: UIViewController {
     
     var delegate : CreateApplication?
     
-    var dayArr = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
-    var numberOfDay = 0
+    var statusArray = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
     
     var name: String = ""
     
@@ -104,12 +100,7 @@ class ApplicationDetailViewController: UIViewController {
                     alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
                     self.present(alert, animated: true, completion: nil)
                 }
-//        else if !dayArr.contains((selectedButton.titleLabel?.text)!) {
-//                    let alert = UIAlertController(title: "Invalid Status", message: "Please select a valid status from the button! e.g. Applied", preferredStyle: .alert)
-//                    alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
-//                    self.present(alert, animated: true, completion: nil)
-//                }
-        else if !dayArr.contains(btnSelectStatus.titleLabel?.text ?? "")  {
+        else if !statusArray.contains(btnSelectStatus.titleLabel?.text ?? "")  {
             let alert = UIAlertController(title: "Select Status", message: "Please select an application status", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Okay", style: .cancel, handler: { _ in self.dismiss(animated: true, completion: nil)}))
             self.present(alert, animated: true, completion: nil)
@@ -117,11 +108,8 @@ class ApplicationDetailViewController: UIViewController {
                else{
                     name = companyName.text!
                     jobTitle = JobTitle.text!
-//                    statusTitle = Status.text!
                    // ------------------------------------------------------------------------
-                    //statusTitle = (selectedButton.titleLabel?.text)!
                    statusTitle = (selectedButton.titleLabel?.text)!
-                   //print(statusTitle)
                    // ------------------------------------------------------------------------
                     locationTitle = Location.text!
                     link = jobLink.text!
@@ -132,19 +120,6 @@ class ApplicationDetailViewController: UIViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
     }
-    
-    @IBAction func changeStatus(_ sender: Any) {
-        let actionSheetAlert = UIAlertController(title: "Pick a Status", message: "", preferredStyle: .actionSheet)
-        for dayOfWeek in 0...4 {
-            actionSheetAlert.addAction(UIAlertAction(title: "\(dayArr[dayOfWeek])", style: .default, handler: { _ in self.Status.text = "\(self.dayArr[dayOfWeek])"
-                self.numberOfDay = dayOfWeek
-            }))
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheetAlert.addAction(cancelAction)
-        self.present(actionSheetAlert, animated: true, completion: nil)
-    }
-    
     // ------------------------------------------------------------------------
     
     func addTransparentView(frames: CGRect) {
@@ -177,7 +152,6 @@ class ApplicationDetailViewController: UIViewController {
         dataSource = ["Need to Apply", "Applied", "Interviewing", "Offered", "Rejected"]
         selectedButton = btnSelectStatus
         addTransparentView(frames: btnSelectStatus.frame)
-        //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
     }
     
     // ------------------------------------------------------------------------
@@ -213,10 +187,7 @@ extension ApplicationDetailViewController: UITableViewDelegate, UITableViewDataS
             let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
             mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: dataSource[indexPath.row])
             btnSelectStatus.setAttributedTitle(mutableAttributedTitle, for: .normal)
-            //btnSelectStatus.setTitleColor(UIColor.red, for: .normal)
-            //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
         }
-        //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
         selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
         removeTransparentView()
     }

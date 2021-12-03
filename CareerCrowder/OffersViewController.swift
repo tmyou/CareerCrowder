@@ -57,16 +57,13 @@ class OfferViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(companiesListApp)
+
         // Do any additional setup after loading the view.
         // ------------------------------------------------------------------------
         
         ststableView.delegate = self
         ststableView.dataSource = self
         ststableView.register(CellClass.self, forCellReuseIdentifier: "Cell")
-        print(companiesList.count)
-        //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
-        
         // ------------------------------------------------------------------------
     }
     
@@ -150,6 +147,7 @@ class OfferViewController: UIViewController {
     
     func clearPage ()
     {
+        removeTransparentView()
         CompanyName1.text = ""
         Position1.text = ""
         Location1.text = ""
@@ -201,16 +199,6 @@ extension OfferViewController: UITableViewDelegate, UITableViewDataSource {
      }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if let attributedTitle = btnSelectStatus.attributedTitle(for: .normal) {
-//            let mutableAttributedTitle = NSMutableAttributedString(attributedString: attributedTitle)
-//            mutableAttributedTitle.replaceCharacters(in: NSMakeRange(0, mutableAttributedTitle.length), with: dataSource[indexPath.row])
-//            btnSelectStatus.setAttributedTitle(mutableAttributedTitle, for: .normal)
-//            //btnSelectStatus.setTitleColor(UIColor.red, for: .normal)
-//            //btnSelectStatus.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
-//        }
-//        //selectedButton.titleLabel?.font = UIFont(name: "Lato-Regular", size: 25)
-//        selectedButton.setTitle(dataSource[indexPath.row], for: .normal)
-        
         if selectedButton == btnSelectOffer1 {
             let splitarr = String(dataSource[indexPath.row]).components(separatedBy: ": ")
             for company in companiesList {
